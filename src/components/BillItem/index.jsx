@@ -39,16 +39,6 @@ const BillItem = ({ bill }) => {
   return <div className={s.item}>
     <div className={s.headerDate}>
       <div className={s.date}>{bill.date}</div>
-      <div className={s.money}>
-        <span>
-          <span>出：</span>
-          <span>{ expense.toFixed() }</span>
-        </span>
-        <span>
-          <span>入：</span>
-          <span>{ income.toFixed() }</span>
-        </span>
-      </div>
     </div>
 
     {
@@ -65,7 +55,7 @@ const BillItem = ({ bill }) => {
             <span>{ item.type_name }</span>
           </>
         }
-        description={<span style={{ color: item.pay_type == 2 ? 'red' : '#39be77' }}>{`${item.pay_type == 1 ? '-' : '+'}${item.amount}`}</span>}
+        description={<span style={{ color: item.pay_type == 2 ? 'red' : '#39be77' }}>{`${item.pay_type == 1 ? '-' : '+'}${item.amount}${item.unit}`}</span>}  
         help={<div>{dayjs(Number(item.date)).format('HH:mm')} {item.remark ? `| ${item.remark}` : ''}</div>}
       >
       </Cell>)

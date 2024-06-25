@@ -92,8 +92,7 @@ const Home = () => {
   return <div className={s.home}>
     <div className={s.header}>
       <div className={s.dataWrap}>
-        <span className={s.expense}>总出库：<b> { totalExpense }</b></span>
-        <span className={s.income}>总入库：<b> { totalIncome }</b></span>
+        <span className={s.income}>危化品台账</span>
       </div>
       <div className={s.typeWrap}>
         <div className={s.left} onClick={toggle}>

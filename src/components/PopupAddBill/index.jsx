@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Popup, Icon, Toast, Keyboard, Modal, Input  } from 'zarm';
 import cx from 'classnames'
 import dayjs from 'dayjs'; 
-import CustomIcon from '../CustomIcon'
 import PopupType from '../PopupType'
 import PopupDate from '../PopupDate'
+import PopupBillType from '../PopupBillType';  
 import { get, typeMap, post } from '@/utils'//
 import { useNavigate } from 'react-router-dom'///////////
 import s from './style.module.less';
@@ -21,11 +21,12 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
   const [payType, setPayType] = useState('expense'); // 出库或入库类型
   const [expense, setExpense] = useState([]); // 出库类型数组
   const [income, setIncome] = useState([]); // 入库类型数组
-  const [currentType, setCurrentType] = useState({});
   const [amount, setAmount] = useState(''); // 账单价格
   const [remark, setRemark] = useState(''); // 备注
   const [showRemark, setShowRemark] = useState(false); // 备注输入框
   const [date, setDate] = useState(new Date()); // 日期
+  const [currentType, setCurrentType] = useState({}); // 当前选中账单类型  
+
   const navigateTo = useNavigate(); // 路由实例///////////////////////////////////
   // const [refreshing, setRefreshing] = useState(REFRESH_STATE.normal); // 下拉刷新状态///////////////////////////////
 
@@ -105,7 +106,11 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
   const selectDate = (val) => {
     setDate(val)
   }
-
+  // 账单类型选择回调  
+  const selectBillType = (item) => {  
+    setCurrentType(item);  
+  }  
+  
   // 选择账单类型
   const selectType = (item) => {
     setCurrentSelect(item);
@@ -150,11 +155,9 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
     // Adjust parameter to combine amount with unit
     const combinedAmount = `${amount} ${unit}`;
     const params = {
-      amount: combinedAmount,
-    //   // Other parameters
-    //     };
-    // const params = {
-    //   amount: Number(amount).toFixed(),
+      // amount: combinedAmount,
+      amount: Number(amount).toFixed(),  
+      unit: unit|| 'ml',  
       type_id: currentType.id,
       type_name: currentType.name,
       date: dayjs(date).unix() * 1000,
@@ -194,71 +197,6 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
       content: '出库前，请领用人仔细阅读MSDS，了解产品危害、安全处理及紧急情况处理手段',
     });
   }
-  //   console.log('detail.id:', detail.id);
-  //   console.log('detail.type_id:', detail.type_id); // Debugging the value of currentType.id
-  //   /////////////////////////////
-  //   switch (currentType.id) { // 假设类型在 currentType.id 中 
-  //     case '1':  
-  //       navigateTo(`about`)  
-  //       break  
-
-  //     case '2':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '3':  
-  //       navigateTo('/about')  
-  //       break  
-        
-  //     case '4':  
-  //       navigateTo('/about')  
-  //       break  
-      
-  //     case '5':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '6':  
-  //       navigateTo('/about')  
-  //       break  
-        
-  //     case '7':  
-  //       navigateTo('/about')  
-  //       break  
-      
-  //     case '8':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '9':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '10':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '11':  
-  //       navigateTo('/about')  
-  //       break  
-
-  //     case '12':  
-  //       navigateTo('about')  
-  //       break  
-        
-
-  //     // 其他类型
-  //     default: 
-  //       window.open('https://www.baidu.com', '_blank');
-
-  //       // navigateTo('www.baidu.com') 
-  //       break  
-  //   }  
-  //   // navigateTo(`about`)
-    
-  //   // navigateTo(`/detail?id=${item.id}`)
-  // };
-
   return <Popup
     visible={show}
     direction="bottom"
@@ -276,18 +214,16 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
           <span onClick={() => changeType('income')} className={cx({ [s.income]: true, [s.active]: payType == 'income' })}>入库</span>
           
         </div>
+        
         <div className={s.time} onClick={handleDatePop}>{dayjs(date).format('MM-DD')} <Icon className={s.arrow} type="arrow-bottom" /></div>
         <div className={s.type} onClick={handleTypeSelect}>
-          <span className={s.time}>{currentSelect.name || '选择化学品'} <Icon className={s.arrow} type="arrow-bottom" /></span>
-        </div>
-
-        {/* <div className={s.time} onClick={choseType2(item)}> <Icon className={s.arrow} type="arrow-bottom" />选择化学品111</div> */}
+        <span className={s.time}>{currentType.name || '选择化学品'} <Icon className={s.arrow} type="arrow-bottom" /></span>
+        </div> 
       </div>
       <div className={s.money}>
-        <span className={s.sufix}></span>
+        
         <span className={cx(s.amount, s.animation)}>{amount}</span>
-        <UnitDropdown /> {/* Adding the dropdown for unit selection */}
-
+        <span className={s.sufix}><UnitDropdown /> </span>
       </div>
 
       <div className={s.remark}>
@@ -307,7 +243,8 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
       </div>
       <Keyboard type="price" onKeyClick={(value) => handleMoney(value)} />
       <PopupDate ref={dateRef} onSelect={selectDate} />
-      <PopupType ref={typeRef} onSelect={selectType} />
+      {/* <PopupType ref={typeRef} onSelect={selectBillType} /> */}
+      <PopupBillType ref={typeRef} payType={payType} currentType={currentType} onSelect={selectBillType} />  
     </div>
   </Popup>
 });
@@ -317,7 +254,5 @@ PopupAddBill.propTypes = {
   onReload: PropTypes.func,
   onSelect: PropTypes.func////////////////////////////////////
 }
-
-
 
 export default PopupAddBill;

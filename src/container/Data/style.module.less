@@ -1,194 +1,199 @@
-.data {  
-  height: 100%;  
-  display: flex;  
-  flex-direction: column;  
-  background-color: #f5f5f5;  
-  .searchArea {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-  }
-  
-  .searchArea input {
-    flex-grow: 1;
-    margin-right: 8px;
-  }
-  
-  .searchArea button {
-    padding: 8px 16px;
-    background-color: #295a8c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .searchArea button:hover {
-    background-color: #005fa3;
-  }
-  
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 80px;
-    background-color: #007fff;
-    color: #fff;
-    font-size: 14px;
-    z-index: 100;
-    padding: 10px;
-    .data-wrap {
-      font-size: 14px;
-      > span {
-        font-size: 12px;
-        > b {
-          font-size: 26px;
-          font-family: DINCondensed-Bold, DINCondensed;
-          margin-left: 4px;
-        }
-      }
-      .income {
-        margin-left: 10px;
-      }
-    }
-    .type-wrap {
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      > div {
-        align-self: flex-start;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 30px;
-        padding: 3px 8px;
-        font-size: 12px;
-      }
-      .left {
-        margin-right: 6px;
-      }
-      .arrow {
-          font-size: 12px;
-          margin-left: 4px;
-      }
-    }
-  }
-  .content-wrap {
-    height: calc(~"(100% - 50px)");
-    overflow: hidden;
-    overflow-y: scroll;
-    background-color: #f5f5f5;
-    padding: 10px;
-    :global {
-      .za-pull {
-        overflow: unset;
-      }
-    }
-  }
-  .add {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 20%);
+.data {
+  min-height: 100%;
+  background-color: #f5f5f5;
+  .total {
     background-color: #fff;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border: 1PX solid #e9e9e9;
-    color: #007fff;
+    padding: 24px 0;
+    margin-bottom: 10px;
+    .time {
+      position: relative;
+      width: 96px;
+      padding: 6px;
+      background-color: #f5f5f5;
+      color: rgba(0, 0, 0, .9);
+      border-radius: 4px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      span:nth-of-type(1)::after {
+         content: '';
+        position: absolute;
+        top: 9px;
+        bottom: 8px;
+        right: 28px;
+        width: 1px;
+        background-color: rgba(0, 0, 0, .5);
+      }
+      .date {
+        font-size: 16px;
+        color: rgba(0, 0, 0, .5);
+      }
+    }
+    .title {
+      color: #007fff;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .expense {
+      font-size: 24px;
+      color: #007fff;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .income {
+      color: rgba(0, 0, 0, .5);
+      font-weight: 500;
+    }
   }
-}  
-  
-.card {  
-  border-radius: 12px;  
-  background-color: #fff;  
-  padding: 0 12px;  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  .type {  
-    padding: 24px 0 12px 0;  
-    span:nth-of-type(1) {  
-      display: inline-block;  
-      width: 22px;  
-      height: 22px;  
-      color: #fff;  
-      border-radius: 50%;  
-      text-align: center;  
-      line-height: 24px;  
-      margin-right: 8px;  
-    }  
-    .expense {  
-      background-color: #007fff;  
-    }  
-    .income {  
-      background-color: rgb(236, 190, 37);  
-    }  
-    .iconfont {  
-      font-size: 16px;  
-    }  
-  }  
-  .amount {  
-    font-size: 24px;  
-    font-weight: 600;  
-    margin-bottom: 24px;  
-  }  
-  .info {  
-    width: 100%;  
-    font-size: 14px;  
-    text-align: left;  
-    .time {  
-      display: flex;  
-      align-items: center;  
-      justify-content: flex-start;  
-      margin-bottom: 12px;  
-      span:nth-of-type(1) {  
-        flex: 3;  
-        color: rgba(0,0,0,0.5)  
-      }  
-      span:nth-of-type(2) {  
-        flex: 9;  
-      }  
-    }  
-    .remark {  
-      display: flex;  
-      align-items: center;  
-      justify-content: flex-start;  
-      margin-bottom: 12px;  
-      span:nth-of-type(1) {  
-        flex: 3;  
-        color: rgba(0,0,0,0.5)  
-      }  
-      span:nth-of-type(2) {  
-        flex: 9;  
-        color: rgba(0,0,0,0.9)  
-      }  
-    }  
-  }  
-  .operation {  
-    width: 100%;  
-    height: 50px;  
-    display: flex;  
-    align-items: center;  
-    font-size: 16px;  
-    .van-icon {  
-      margin-right: 4px;  
-    }  
-    span {  
-      display: flex;  
-      align-items: center;  
-      justify-content: center;  
-      height: 100%;  
-      flex: 1  
-    }  
-    span:nth-of-type(1) {  
-      color: red;  
-    }  
-  }  
-}  
+  .structure {
+    padding: 0 16px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      flex-direction: column;
+      width: 100%;
+      background-color: #007fff;
+      color: #fff;
+      font-size: 14px;
+      z-index: 100;
+      .title {
+        font-size: 18px;
+      }
+      .tab {
+        span {
+          display: inline-block;
+          width: 40px;
+          height: 24px;
+          background-color: #f5f5f5;
+          text-align: center;
+          line-height: 24px;
+          margin-left: 10px;
+          border-radius: 4px;
+        }
+        .expense {
+          &.active {
+            background-color: rgba(0, 127, 255, 0.2);
+            color: #007fff;
+          }
+        }
+        .income {
+          &.active {
+            background-color: rgba(236, 190, 37, 0.2);
+            color: rgb(236, 190, 37);
+          }
+        }
+      }
+    }
+    .content {
+      .item {
+        display: flex;
+        height: 50px;
+        align-items: center;
+        .left {
+          flex: 4;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-right: 10px;
+          .type {
+            display: flex;
+            align-items: center;
+            span:nth-of-type(1) {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border-radius: 50%;
+              width: 30px;
+              height: 30px;
+              margin-right: 10px;
+              color: #fff;
+              flex-shrink: 0;
+            }
+            .name {
+              width: 30px;
+            }
+            .expense {
+              background-color: #007fff;
+            }
+            .income {
+              background-color: rgb(236, 190, 37);
+            }
+          }
+        }
+        .right {
+          flex: 8;
+          display: flex;
+          align-items: center;
+          .percent {
+            flex: 1;
+            :global {
+              .za-progress__track {
+                background: transparent;
+              }
+            }
+          }
+          .momey {
+            width: 100px;
+          }
+        }
+      }
+    }
+    .proportion {
+      background-color: #fff;
+      padding: 12px;
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        .title {
+          font-size: 18px;
+          color: rgba(0, 0, 0, .9);
+        }
+        .tab {
+          span {
+            display: inline-block;
+            width: 40px;
+            height: 24px;
+            background-color: #f5f5f5;
+            text-align: center;
+            line-height: 24px;
+            margin-left: 10px;
+            border-radius: 4px;
+          }
+          .expense {
+            &.active {
+              background-color: rgba(0, 127, 255, 0.2);
+              color: #007fff;
+            }
+          }
+          .income {
+            &.active {
+              background-color: rgba(236, 190, 37, 0.2);
+              color: rgb(236, 190, 37);
+            }
+          }
+        }
+      }
+      :global {
+        #proportion {
+          width: 100%;
+          height: 400px;
+        }
+      }
+    }
+  }
+}
