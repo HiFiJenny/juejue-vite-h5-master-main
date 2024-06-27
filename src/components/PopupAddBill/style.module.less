@@ -60,14 +60,20 @@
     padding-bottom: 12px;
     border-bottom: 1px solid #e9e9e9;
     margin: 0 24px;
+    
     .sufix {
       font-size: 12px;
       display: flex;
-
-      padding: 4px 12px;
-      background-color: #f0f0f0;
-      border-radius: 20px;
+      padding: 0 24px;
+      padding-bottom: 12px;
+      :global {
+        .za-input--textarea {
+          border: 1px solid #e9e9e9;
+          padding:  10px;
+        }
+      }
     }
+
     .amount {
       font-size: 40px;
       padding-left: 10px;
@@ -130,7 +136,8 @@
   .remark {
     padding: 0 24px;
     padding-bottom: 12px;
-    color: #4b67e2;
+    font-size: 12px;
+    color: #888c9b;
     :global {
       .za-input--textarea {
         border: 1px solid #e9e9e9;

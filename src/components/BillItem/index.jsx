@@ -48,10 +48,10 @@ const BillItem = ({ bill }) => {
         onClick={() => goToDetail(item)}
         title={
           <>
-            <CustomIcon
+            {/* <CustomIcon
               className={s.itemIcon}
               type={item.type_id ? typeMap[item.type_id].icon : 1}
-            />
+            /> */}
             <span>{ item.type_name }</span>
           </>
         }

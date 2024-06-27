@@ -51,7 +51,7 @@ const Detail = () => {
     <div className={s.card}>
       <div className={s.type}>
         <span className={cx({ [s.expense]: detail.pay_type == 1, [s.income]: detail.pay_type == 2 })}>
-          <CustomIcon className={s.iconfont} type={detail.type_id ? typeMap[detail.type_id].icon : 1} />
+          <CustomIcon className={s.name} type={detail.type_id ? typeMap[detail.type_id].icon : 1} />
         </span>
         <span>{ detail.type_name || '' }</span>
       </div>
