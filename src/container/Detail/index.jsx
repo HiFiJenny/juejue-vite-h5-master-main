@@ -58,7 +58,7 @@ const Detail = () => {
       {
         detail.pay_type == 1
           ? <div className={cx(s.amount, s.expense)}>-{ detail.amount }</div>
-          : <div className={cx(s.amount, s.incom)}>+{ detail.amount }</div>
+          : <div className={cx(s.amount, s.income)}>+{ detail.amount }</div>
       }
       <div className={s.info}>
         <div className={s.time}>
