@@ -212,9 +212,7 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
         <div className={s.type}>
           <span onClick={() => changeType('expense')} className={cx({ [s.expense]: true, [s.active]: payType == 'expense' })}>出库</span>
           <span onClick={() => changeType('income')} className={cx({ [s.income]: true, [s.active]: payType == 'income' })}>入库</span>
-          
         </div>
-        
         <div className={s.time} onClick={handleDatePop}>{dayjs(date).format('MM-DD')} <Icon className={s.arrow} type="arrow-bottom" /></div>
         <div className={s.type} onClick={handleTypeSelect}>
         <span className={s.time}>{currentType.name || '选择化学品'} <Icon className={s.arrow} type="arrow-bottom" /></span>
@@ -243,7 +241,6 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
       </div>
       <Keyboard type="price" onKeyClick={(value) => handleMoney(value)} />
       <PopupDate ref={dateRef} onSelect={selectDate} />
-      {/* <PopupType ref={typeRef} onSelect={selectBillType} /> */}
       <PopupBillType ref={typeRef} payType={payType} currentType={currentType} onSelect={selectBillType} />  
     </div>
   </Popup>
@@ -252,7 +249,7 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
 PopupAddBill.propTypes = {
   detail: PropTypes.object,
   onReload: PropTypes.func,
-  onSelect: PropTypes.func////////////////////////////////////
+  onSelect: PropTypes.func
 }
 
 export default PopupAddBill;

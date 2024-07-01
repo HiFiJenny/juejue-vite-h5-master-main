@@ -62,17 +62,6 @@ const User = () => {
       onClick={() => navigateTo('/account')}
       icon={<img style={{ width: 20, verticalAlign: '-7px' }} src="//s.yezgea02.com/1615974766264/zhaq.png" alt="" />}
     />
-    {/* <Cell
-      hasArrow
-      title="我的标签"
-      icon={<img style={{ width: 20, verticalAlign: '-7px' }} src="//s.yezgea02.com/1619321650235/mytag.png" alt="" />}
-    /> */}
-    {/* <Cell
-      hasArrow
-      title="关于我们"
-      onClick={() => navigateTo('/about')}
-      icon={<img style={{ width: 20, verticalAlign: '-7px' }} src="//s.yezgea02.com/1615975178434/lianxi.png" alt="" />}
-    /> */}
    </div>
    <Button className={s.logout} block theme="danger" onClick={logout}>退出当前柜子</Button>
    <Modal
