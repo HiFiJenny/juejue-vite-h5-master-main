@@ -92,11 +92,11 @@ const  Data = () => {
       </div>
       <div className={s.content} style={{ marginTop: '60px' }}>
         {
-          (totalType == 'expense' ? expenseData : incomeData).map(item => <div key={item.type_id} className={s.item}>
+          [...expenseData, ...incomeData].map(item => <div key={item.type_id} className={s.item}>
             <div className={s.left}>
               <div className={s.name}>
                 <span className={cx({ [s.expense]: totalType == 'expense', [s.income]: totalType == 'income' }, s.name)}>
-                  {item.type_name}
+                  {item.type_name}{item.pay_type === 1 ? '（出）' : '（入）'}  
                 </span>
               </div>
               <div className={s.progress}>{ Number(item.number).toFixed() || 0 }</div>

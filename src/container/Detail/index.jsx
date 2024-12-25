@@ -66,7 +66,7 @@ const Detail = () => {
           <span>{dayjs(Number(detail.date)).format('YYYY-MM-DD HH:mm')}</span>
         </div>
         <div className={s.remark}>
-          <span>领用人</span>
+          <span>领用人和管理人</span>
           <span>{ detail.remark || '-' }</span>
         </div>
       </div>

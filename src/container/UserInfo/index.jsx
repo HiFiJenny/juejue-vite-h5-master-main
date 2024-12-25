@@ -60,11 +60,11 @@ const UserInfo = () => {
   }
 
   return <>
-    <Header title='柜子信息' />
+    <Header title='账号信息' />
     <div className={s.userinfo}>
-      <h1>柜子资料</h1>
+      <h1>账号资料</h1>
       {/* <div className={s.item}>
-        <div className={s.title}>柜子照片</div>
+        <div className={s.title}>账号照片</div>
         <div className={s.avatar}>
           <img className={s.avatarUrl} src={avatar} alt=""/>
           <div className={s.desc}>

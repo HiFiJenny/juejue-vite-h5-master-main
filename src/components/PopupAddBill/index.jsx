@@ -194,7 +194,7 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
   const goToDetail = () => {
     Modal.alert({
       title: '提示',
-      content: '出库前，请领用人仔细阅读MSDS，了解产品危害、安全处理及紧急情况处理手段',
+      content: '出库前，请领用人和管理人仔细阅读MSDS，了解产品危害、安全处理及紧急情况处理手段',
     });
   }
   return <Popup
@@ -233,10 +233,10 @@ const PopupAddBill = forwardRef(({ detail = {}, onReload }, ref) => {
             type="text"
             rows={3}
             value={remark}
-            placeholder="请输入领用人信息"
+            placeholder="请输入领用人和管理人信息"
             onChange={(val) => setRemark(val)}
             onBlur={() => setShowRemark(false)}
-          /> : <span onClick={() => setShowRemark(true)}>{remark || '添加领用人'}</span>
+          /> : <span onClick={() => setShowRemark(true)}>{remark || '添加领用人和管理人'}</span>
         }
       </div>
       <Keyboard type="price" onKeyClick={(value) => handleMoney(value)} />

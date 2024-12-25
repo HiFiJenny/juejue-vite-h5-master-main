@@ -28,7 +28,7 @@ const NavBar = ({ showNav }) => {
         />
         <TabBar.Item
           itemKey="/user"
-          title="柜子信息"
+          title="账号信息"
           icon={<CustomIcon type="wode" />}
         />
       </TabBar>

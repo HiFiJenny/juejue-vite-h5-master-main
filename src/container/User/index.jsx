@@ -43,16 +43,16 @@ const User = () => {
   return <div className={s.user}>
     <div className={s.head}>
       <div className={s.info}>
-        <span>柜子信息</span>
+        <span>账号信息</span>
         <span>
-          <b>柜子地址信息：{ user.signature || '待输入' }</b>
+          <b>账号地址信息：{ user.signature || '待输入' }</b>
         </span>
       </div>
    </div>
    <div className={s.content}>
     <Cell
       hasArrow
-      title="柜子信息修改"
+      title="账号信息修改"
       onClick={() => navigateTo('/userinfo')}
       icon={<img style={{ width: 20, verticalAlign: '-7px' }} src="//s.yezgea02.com/1615974766264/gxqm.png" alt="" />}
     />
@@ -63,7 +63,7 @@ const User = () => {
       icon={<img style={{ width: 20, verticalAlign: '-7px' }} src="//s.yezgea02.com/1615974766264/zhaq.png" alt="" />}
     />
    </div>
-   <Button className={s.logout} block theme="danger" onClick={logout}>退出当前柜子</Button>
+   <Button className={s.logout} block theme="danger" onClick={logout}>退出当前账号</Button>
    <Modal
       visible={show}
       title="标题"
@@ -82,7 +82,7 @@ const User = () => {
         type="text"
         rows={3}
         value={signature}
-        placeholder="请输入领用人信息"
+        placeholder="请输入领用人和管理人信息"
         onChange={(val) => setSignature(val)}
         />
     </Modal>
